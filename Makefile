@@ -1,3 +1,11 @@
+install:
+	npm install
+
 server:
-	php -S localhost:8080
-	open http://localhost:8080
+	node server.js
+
+proc:
+	foreman start
+
+deploy:
+	git push heroku master
