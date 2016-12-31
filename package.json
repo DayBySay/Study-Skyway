@@ -1,0 +1,22 @@
+{
+  "name": "study-skyway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DayBySay/study-skyway.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DayBySay/study-skyway/issues"
+  },
+  "homepage": "https://github.com/DayBySay/study-skyway#readme",
+  "dependencies": {
+    "socket.io": "^1.7.2"
+  }
+}
