@@ -7,6 +7,7 @@ var peer = new Peer({ key: 'f42387e2-4c9f-4951-bce2-cc7802643eba', debug: 3});
  
 peer.on('open', function(){
     $('#my-id').text(peer.id);
+	login(peer.id);
 });
  
 peer.on('call', function(call){
@@ -20,6 +21,12 @@ peer.on('call', function(call){
         $('#peer-video').prop('src', url);
     });
 });
+
+var socket = io.connect();
+
+function login(userid) {
+	socket.emit("connected", userid);
+}
  
 $(function() {
     navigator.getUserMedia({audio: true, video: true}, function(stream){

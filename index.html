@@ -1,5 +1,6 @@
 <html>
 <head>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="https://skyway.io/dist/v2/0.3/peer.js"></script>
     <script type="text/javascript" src="videochat.js"></script>
@@ -19,5 +20,9 @@
         <button id="call-start">Start Call</button>
         <button id="call-end">End Call</button>
     </div>
+	<div>
+		<ul id="users">
+		</ul>
+	</div>
 </body>
 </html>
