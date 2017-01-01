@@ -14,13 +14,13 @@ io.sockets.on('connection', function(socket) {
     socket.on("connected", function (userid) {
 		usersHash[socket.id] = userid;
 
-        socket.emit("reload_users", getUsers());
+        io.sockets.emit("reload_users", getUsers());
     });
 
     socket.on("disconnect", function(data) {
 		delete usersHash[socket.id];
 
-        socket.emit("reload_users", getUsers());
+        io.sockets.emit("reload_users", getUsers());
     });
 });
 
