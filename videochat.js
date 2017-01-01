@@ -27,6 +27,24 @@ var socket = io.connect();
 function login(userid) {
 	socket.emit("connected", userid);
 }
+
+socket.on("reload_users", function(users) {
+	console.log("reload users!");
+	console.log(users);
+	var ul = document.getElementById("users");
+	while (ul.firstChild){
+		ul.removeChild(ul.firstChild);
+	}
+		
+	users.forEach(function (item, index, array) {
+		var p = document.createElement("p");
+		var text = document.createTextNode(item);
+		p.appendChild(text);
+		var li = document.createElement("li");
+		li.appendChild(p);
+		ul.appendChild(li);
+	});
+});
  
 $(function() {
     navigator.getUserMedia({audio: true, video: true}, function(stream){

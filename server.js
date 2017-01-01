@@ -8,13 +8,26 @@ var server = http.createServer(app).listen(port);
 var socketio = require('socket.io');
 var io = socketio.listen(server);
 
+var usersHash = {};
+
 io.sockets.on('connection', function(socket) {
     socket.on("connected", function (userid) {
-        socket.broadcast.emit("connect", userid);
+		usersHash[socket.id] = userid;
+
+        socket.emit("reload_users", getUsers());
     });
 
     socket.on("disconnect", function(data) {
-		console.log(data);
+		delete usersHash[socket.id];
+
+        socket.emit("reload_users", getUsers());
     });
 });
 
+function getUsers() {
+	var users = [];
+	for(key in usersHash){
+		users.push(usersHash[key]);
+	}
+	return users;
+}
